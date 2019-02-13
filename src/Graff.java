@@ -22,26 +22,7 @@ public class Graff {
         graph = matrix;
     }
 
-    void BFS(int v){
 
-        boolean[] used = new boolean[vNum];
-        int[] queue = new int[vNum];
-        int qH = 0;
-        int qT = 0;
-
-        used[v] = true;
-        queue[qT++] = v;
-
-        while (qH < qT){
-            v = queue[qH++];
-            for (int nv = 0; nv < vNum; nv++){
-                if (!used[nv] && graph[v][nv]){
-                    used[nv] = true;
-                    queue[qT++] = nv;
-                }
-            }
-        }
-    }
     void Bfs(){
          a.add(1);
         a.stream().forEach(System.out::println);
