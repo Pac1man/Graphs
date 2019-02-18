@@ -9,7 +9,7 @@ public class Main {
         Scanner in = new Scanner(System.in);
         System.out.print("Input matrix size: ");
         int size = in.nextInt();
-        Graff a = new Graff();
+        Graphs a = new Graphs();
         a.inputMatrix(size);
         a.Bfs();
 
