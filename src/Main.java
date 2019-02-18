@@ -12,7 +12,7 @@ public class Main {
         Graphs a = new Graphs();
         a.inputMatrix(size);
         a.Bfs();
-
+        a.Dfs();
     }
 
 

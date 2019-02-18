@@ -1,11 +1,12 @@
 import java.util.ArrayDeque;
-import java.util.Arrays;
 import java.util.Scanner;
 
 
 class Graphs {
     private boolean[][] graph;
-     void inputMatrix(int size){
+    private ArrayDeque<Integer > queue = new ArrayDeque<>();
+    private boolean[] used = new boolean[6];
+    void inputMatrix(int size){
         Scanner in = new Scanner(System.in);
          boolean[][] matrix = new boolean[size][size];
         for (int i = 0; i<size; i++){
@@ -20,8 +21,6 @@ class Graphs {
 
 
     void Bfs(){
-        ArrayDeque<Integer > queue = new ArrayDeque<>();
-        boolean[] used = new boolean[6];
         queue.add(1);
         used[0] = true;
         while (!queue.isEmpty()){
@@ -35,10 +34,36 @@ class Graphs {
             }
             queue.remove();
         }
+        isConnected(used);
     }
 
-    void isConnected(){
+    void isConnected(boolean[] used){  //Костыли
+        boolean flag = false;
+        for (int i = 0; i < graph.length; i++){
+            if (!used[i]){
+                flag = false;
+                System.out.println("Граф не связан");
+            }
+            else flag = true;
 
+        }
+        if (flag){
+            System.out.println("Граф связан");
+        }
+    }
+
+
+    int Dfs() {
+            int visitedGraphs = 1;
+            used[0] = true;
+            for (int i = 0; i < graph.length; i++){
+                if (!used[i]){
+                    visitedGraphs += Dfs();
+                    System.out.println("Количетсво связных графоф" + visitedGraphs);
+                }
+            }
+        System.out.println("Количество звянных графоф: " + visitedGraphs);
+        return visitedGraphs;
     }
 
 }
