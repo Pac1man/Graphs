@@ -11,8 +11,7 @@ public class Main {
         int size = in.nextInt();
         Graphs a = new Graphs();
         a.inputMatrix(size);
-        a.Bfs();
-        a.Dfs();
+        a.topologicalSort();
     }
 
 

@@ -5,7 +5,7 @@ import java.util.Scanner;
 class Graphs {
     private boolean[][] graph;
     private ArrayDeque<Integer > queue = new ArrayDeque<>();
-    private boolean[] used = new boolean[6];
+    private boolean[] used = new boolean[7];
     void inputMatrix(int size){
         Scanner in = new Scanner(System.in);
          boolean[][] matrix = new boolean[size][size];
@@ -53,17 +53,29 @@ class Graphs {
     }
 
 
-    int Dfs() {
+    int Dfs(int g) {
             int visitedGraphs = 1;
             used[0] = true;
             for (int i = 0; i < graph.length; i++){
                 if (!used[i]){
-                    visitedGraphs += Dfs();
-                    System.out.println("Количетсво связных графоф" + visitedGraphs);
+                    used[i] = true;
+                    g = i;
+                    visitedGraphs += Dfs(g);
+                    System.out.println(visitedGraphs);
                 }
             }
-        System.out.println("Количество звянных графоф: " + visitedGraphs);
         return visitedGraphs;
     }
 
+    void topologicalSort(){
+        for (int i = 0; i<graph.length; i++){
+            used[i] = false;
+        }
+        queue.clear();
+        for (int i = 0; i < graph.length; i++){
+            if (!used[i]){
+                System.out.println(Dfs(i));
+            }
+        }
+    }
 }
